@@ -1,0 +1,50 @@
+package we.ketamine.club.util;
+
+import it.unimi.dsi.fastutil.objects.Object2IntMap.Entry;
+import net.minecraft.core.Holder;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.Enchantment;
+import we.ketamine.club.util.traits.Util;
+
+public final class EnchantmentUtil implements Util {
+   private EnchantmentUtil() {
+      throw new IllegalArgumentException();
+   }
+
+   public static int getLevel(ResourceKey<Enchantment> key, ItemStack stack) {
+      if (stack.isEmpty()) {
+         return 0;
+      } else {
+         for (Entry<Holder<Enchantment>> enchantment : stack.getEnchantments().entrySet()) {
+            if (((Holder)enchantment.getKey()).is(key)) {
+               return enchantment.getIntValue();
+            }
+         }
+
+         return 0;
+      }
+   }
+
+   public static int getLevel(ResourceKey<Enchantment> key, EquipmentSlot slot, LivingEntity entity) {
+      return getLevel(key, entity.getItemBySlot(slot));
+   }
+
+   public static int getLevel(ResourceKey<Enchantment> key, EquipmentSlot slot) {
+      return getLevel(key, slot, mc.player);
+   }
+
+   public static boolean has(ResourceKey<Enchantment> key, ItemStack stack) {
+      return getLevel(key, stack) > 0;
+   }
+
+   public static boolean has(ResourceKey<Enchantment> key, EquipmentSlot slot, LivingEntity entity) {
+      return getLevel(key, slot, entity) > 0;
+   }
+
+   public static boolean has(ResourceKey<Enchantment> key, EquipmentSlot slot) {
+      return getLevel(key, slot) > 0;
+   }
+}

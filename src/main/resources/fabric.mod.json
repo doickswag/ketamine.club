@@ -1,0 +1,36 @@
+{
+  "schemaVersion": 1,
+  "id": "ketamineclub",
+  "version": "1.1.1",
+  "name": "ketamine.club",
+  "description": "A Fabric utility mod for Minecraft.",
+  "authors": [
+    "dmt"
+  ],
+  "contact": {
+  },
+  "license": "AGPL-3.0-or-later",
+  "icon": "assets/ketamineclub/icon.png",
+  "environment": "client",
+  "accessWidener": "ketamineclub.accesswidener",
+  "entrypoints": {
+    "client": [
+      "we.ketamine.club.KetamineClub"
+    ],
+    "main": [
+      "we.ketamine.club.KetamineClub"
+    ]
+  },
+  "mixins": [
+    "ketamineclub.mixins.json"
+  ],
+  "depends": {
+    "fabricloader": ">=0.19.3",
+    "java": ">=25",
+    "fabric-api": "*",
+    "minecraft": "~26.2"
+  },
+  "breaks": {
+    "homovore": "*"
+  }
+}

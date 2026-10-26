@@ -1,0 +1,6 @@
+accessWidener v2 official
+
+accessible field net/minecraft/client/Minecraft rightClickDelay I
+accessible method net/minecraft/client/multiplayer/MultiPlayerGameMode ensureHasSentCarriedItem ()V
+accessible field net/minecraft/client/player/ClientInput moveVector Lnet/minecraft/world/phys/Vec2;
+accessible class net/minecraft/client/renderer/rendertype/RenderSetup$TextureBinding
